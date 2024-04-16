@@ -2,7 +2,7 @@
 title: "Datasheet for the City of Austin, Texas '2020 Racial Profiling (RP) dataset' (Austin Police Department 2023a)"
 author: 
   - Benny Rochwerg
-thanks: "Data and code employed in the creation of this report can be found here: <https://github.com/bennyrochwerg/profiling>"
+thanks: "Code employed in the creation of this datasheet can be found here: <https://github.com/bennyrochwerg/profiling>"
 date: 04-18-2024
 date-format: long
 format: pdf
