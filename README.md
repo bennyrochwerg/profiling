@@ -1,8 +1,8 @@
-# Possible Evidence of Racial Profiling by the Austin Police Department in 2020
+# Evidence of Racial Profiling by the Austin Police Department in 2020
 
 # Description
 
-The files used to generate the report *Possible Evidence of Racial Profiling by the Austin Police Department in 2020* are contained in this GitHub Repository.
+The files used to generate the report *Evidence of Racial Profiling by the Austin Police Department in 2020* are contained in this GitHub Repository.
 
 Portions of the R code used in this analysis were adapted based on Alexander (2023).
 
