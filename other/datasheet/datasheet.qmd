@@ -10,6 +10,20 @@ number-sections: true
 bibliography: references.bib
 ---
 
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+#### Preamble ####
+
+# Purpose: Creating a datasheet for the City of Austin, Texas
+# "2020 Racial Profiling (RP) dataset" (Austin Police Department 2023a).
+# Author: Benny Rochwerg
+# Date: April 18, 2024
+# Contact: 4321benny@gmail.com
+```
+
 These questions are from @gebru2021datasheets.
 
 **Motivation**

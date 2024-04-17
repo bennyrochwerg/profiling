@@ -19,6 +19,25 @@ bibliography: references.bib
 #| warning: false
 #| message: false
 
+#### Preamble ####
+
+# Purpose: Writing a report based on the City of Austin, Texas
+# "2020 Racial Profiling (RP) dataset" (Austin Police Department 2023a).
+# Author: Benny Rochwerg
+# Date: April 18, 2024
+# Contact: 4321benny@gmail.com
+# Pre-requisites: Installation of the tidyverse (Wickham et al. 2019),
+# here (Müller 2020), rstanarm (Goodrich et al. 2024),
+# arrow (Richardson et al. 2024), modelsummary (Arel-Bundock 2022),
+# and lintr (Hester et al. 2024) packages. Running of the files titled
+# "01-download_data.R", "02-data_cleaning.R", and "04-model.R".
+```
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
 #### Load Packages ####
 
 # Installation of tidyverse: install.packages("tidyverse")
