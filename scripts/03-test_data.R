@@ -1,7 +1,7 @@
 #### Preamble ####
 
 # Purpose: Testing the City of Austin, Texas "2020 Racial Profiling (RP)
-# dataset" (Kang 2022).
+# dataset" (Austin Police Department 2023a).
 # Author: Benny Rochwerg
 # Date: April 18, 2024
 # Contact: 4321benny@gmail.com
@@ -11,28 +11,30 @@
 
 #### Load Packages ####
 
-# install.packages("tidyverse")
+# Installation of tidyverse: install.packages("tidyverse")
 # This method of installing the arrow package was obtained from:
 # https://github.com/apache/arrow/issues/41050
-# install.packages("arrow", repos = c("https://apache.r-universe.dev"))
+# Installation of arrow: install.packages("arrow",
+#                                         repos =
+#                                         c("https://apache.r-universe.dev"))
 library(tidyverse)
 library(arrow)
 
 #### Test Dataset ####
 
 # Portions of the code below were adapted based on Alexander (2023).
-# The tests below originate from the file titled "00-simulate_data.R".
+# The tests below were adapted from the file titled "00-simulate_data.R".
 
-# Loading the dataset
+# Loading the cleaned dataset
 cleaned_profiling_data <-
   read_parquet("data/analysis_data/cleaned_profiling_data.parquet")
 
 # Verifying the class of each column
 cleaned_profiling_data$type |> class() == "character"
-cleaned_profiling_data$sex |> class() == "character"
-cleaned_profiling_data$race |> class() == "character"
-cleaned_profiling_data$search |> class() == "character"
-cleaned_profiling_data$custody |> class() == "character"
+cleaned_profiling_data$sex |> class() == "factor"
+cleaned_profiling_data$race |> class() == "factor"
+cleaned_profiling_data$search |> class() == "factor"
+cleaned_profiling_data$custody |> class() == "factor"
 cleaned_profiling_data$male |> class() == "numeric"
 cleaned_profiling_data$female |> class() == "numeric"
 cleaned_profiling_data$asian |> class() == "numeric"
@@ -48,16 +50,16 @@ cleaned_profiling_data$custody_binary |> class() == "numeric"
 
 # Verifying the contents of each column
 sort(unique(cleaned_profiling_data$type |> na.omit())) == sort(c("Arrests"))
-sort(unique(cleaned_profiling_data$sex |> na.omit())) == sort(c("Male",
-                                                                  "Female"))
+sort(unique(cleaned_profiling_data$sex |> na.omit())) == factor(c("Female",
+                                                                  "Male"))
 sort(unique(cleaned_profiling_data$race |> na.omit())) ==
-  sort(c("Asian", "Black", "White", "Hawaiian/Pacific Islander",
-         "Middle Eastern", "Hispanic or Latino",
-         "American Indian/Alaskan Native"))
-sort(unique(cleaned_profiling_data$search |> na.omit())) == sort(c("Yes",
-                                                                     "No"))
+  factor(c("White", "Asian", "Black",
+           "Hawaiian/Pacific Islander", "Middle Eastern", "Hispanic or Latino",
+           "American Indian/Alaskan Native"))
+sort(unique(cleaned_profiling_data$search |> na.omit())) == factor(c("No",
+                                                                     "Yes"))
 sort(unique(cleaned_profiling_data$custody |> na.omit())) ==
-  sort(c("Custody", "Non-Custody"))
+  factor(c("Non-Custody", "Custody"))
 sort(unique(cleaned_profiling_data$male |> na.omit())) == sort(c(0, 1))
 sort(unique(cleaned_profiling_data$female |> na.omit())) == sort(c(0, 1))
 sort(unique(cleaned_profiling_data$asian |> na.omit())) == sort(c(0, 1))

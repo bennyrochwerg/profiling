@@ -1,7 +1,7 @@
 #### Preamble ####
 
 # Purpose: Cleaning the City of Austin, Texas "2020 Racial Profiling (RP)
-# dataset" (Kang 2022).
+# dataset" (Austin Police Department 2023a).
 # Author: Benny Rochwerg
 # Date: April 18, 2024
 # Contact: 4321benny@gmail.com
@@ -11,10 +11,12 @@
 
 #### Load Packages ####
 
-# install.packages("tidyverse")
+# Installation of tidyverse: install.packages("tidyverse")
 # This method of installing the arrow package was obtained from:
 # https://github.com/apache/arrow/issues/41050
-# install.packages("arrow", repos = c("https://apache.r-universe.dev"))
+# Installation of arrow: install.packages("arrow",
+#                                         repos =
+#                                         c("https://apache.r-universe.dev"))
 library(tidyverse)
 library(arrow)
 
@@ -84,6 +86,46 @@ cleaned_profiling_data <- cleaned_profiling_data |>
   filter(!is.na(male)) |>
   filter(!is.na(female)) |>
   filter(!is.na(custody_binary))
+
+# Converting columns to factors
+cleaned_profiling_data <- cleaned_profiling_data |>
+  mutate(sex = as_factor(sex),
+         race = as_factor(race),
+         search = as_factor(search),
+         custody = as_factor(custody),
+         sex = factor(
+           sex,
+           levels = c(
+             "Female",
+             "Male"
+           )
+         ),
+         race = factor(
+           race,
+           levels = c(
+             "White",
+             "Asian",
+             "Black",
+             "Hawaiian/Pacific Islander",
+             "Middle Eastern",
+             "Hispanic or Latino",
+             "American Indian/Alaskan Native"
+           )
+         ),
+         search = factor(
+           search,
+           levels = c(
+             "No",
+             "Yes"
+           )
+         ),
+         custody = factor(
+           custody,
+           levels = c(
+             "Non-Custody",
+             "Custody"
+           )
+         ))
 
 #### Save Cleaned Dataset ####
 
